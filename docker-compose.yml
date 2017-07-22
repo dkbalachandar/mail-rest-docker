@@ -1,0 +1,14 @@
+rest:
+    image: mail-rest:latest
+    ports:
+        - 8080:8080
+    environment:
+       - SMTP_HOST=mail
+    links:
+      - mail:mail
+mail:
+    image: fake-smtp:latest
+    volumes:
+     - ./output:/output
+    expose:
+     - 25
